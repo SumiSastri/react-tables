@@ -11,7 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 https://www.mockaroo.com/
 
-How to create a table with React Tables
+## Steps to create a table with the useTable Hook
 
 __Note naming conventions are important to ensure the right data is called matching the right table column and row__
 
@@ -22,8 +22,7 @@ Use template-strings for the name of the json file ```MOCK_NAME_DATA```
 
 eg: For for users ```MOCK_USER_DATA``` and for products ```MOCK_PRODUCT_DATA```
 
-
-2. Define columns ui for the information to be displayed (select only data you want displayed)
+2. Define columns ui for the information to be displayed
 
 Naming convention:
 Use template-strings there can be only one master columns file
@@ -31,32 +30,27 @@ Use template-strings there can be only one master columns file
 eg: ```COLUMNS.js``` the first letter in upper-case as it is a constructor creating an instance of the user's information 
 Assign the data to a variable ```const COLUMNS ``` 
 
-
 There are 2 key-value pairs in the array of objects you are creating - a Header & accessor key with their json-data values.
 
 Header - the value is the string value of the title on the column header that will be displayed on the ui, Header is upper case
 accessor - the value is the json-value defined in your json data, accessor is lower case
 
-There can be no duplicate values
+There can be no duplicate values, the data will appear in exactly the same order as defined in the columns array file, so think about the data order in the display and then create the array.
 
 ```
 [
-    {
+      {
       Header: 'Id',    
       accessor: 'id',
     },
     {
-        Header: 'Title',    
-        accessor: 'title',
-      },
+        Header: 'First Name',    
+        accessor: 'first-name',
+      },  
       {
         Header: 'Last Name',    
         accessor: 'last-name',
       },
-      {
-        Header: 'Mobile Phone',    
-        accessor: 'phone',
-      }
 ]
 ```
 

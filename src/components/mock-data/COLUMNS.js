@@ -4,9 +4,9 @@ export const COLUMNS = [
       accessor: 'id',
     },
     {
-        Header: 'Title',    
-        accessor: 'title',
-      },
+        Header: 'First Name',    
+        accessor: 'first-name',
+      },  
       {
         Header: 'Last Name',    
         accessor: 'last-name',
@@ -19,10 +19,6 @@ export const COLUMNS = [
         Header: 'Email',    
         accessor: 'email-address',
       },
-      {
-        Header: 'Date',    
-        accessor: 'date-time',
-      }
       
 ]   
   

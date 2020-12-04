@@ -22,10 +22,8 @@ export const UserTable = () => {
     
     return (
 <div>
-<span>/getTableProps()/</span>
-<br></br>   
     <table{...getTableProps()}>
-        <thead><span>headerGroups[]/getheaderGroupProps()/headers[]/ column[]/ column.render('Header')</span>
+        <thead>
                 {
                     headerGroups.map((headerGroup => 
                         (<tr {...headerGroup.getHeaderGroupProps()}>
@@ -35,7 +33,7 @@ export const UserTable = () => {
                       </tr>)))
                 }
         </thead>
-        <tbody{...getTableBodyProps()}><span>tbody - getTableBodyProps()/prepareRow()/getRowProps()/ cells[]/getCellProps()/cell.render("Cell") </span>
+        <tbody{...getTableBodyProps()}>
                 {
                     rows.map(row => {
                         prepareRow(row)
@@ -48,10 +46,13 @@ export const UserTable = () => {
                           )
                         })}
         </tbody>
-        <br></br>  
-           <tfoot><span>Placeholder for footer</span>
-        </tfoot> 
     </table>
+    <div>
+ <p>Use Tables Hook</p>               
+<p>/getTableProps()/</p>
+<p>/table header/headerGroups[]/getheaderGroupProps()/headers[]/ column[]/ column.render('Header')</p>
+<p>/tbody/getTableBodyProps()/prepareRow()/getRowProps()/ cells[]/getCellProps()/cell.render("Cell")</p>  
+   </div>
 </div>
     )
 }
