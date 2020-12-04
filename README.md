@@ -4,67 +4,99 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
+In the project directory, you can run  `yarn start`  Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Mock-data from
 
-### `yarn test`
+https://www.mockaroo.com/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+How to create a table with React Tables
 
-### `yarn build`
+__Note naming conventions are important to ensure the right data is called matching the right table column and row__
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Set up mock-data for the table in a json-file
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Naming convention:
+Use template-strings for the name of the json file ```MOCK_NAME_DATA```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+eg: For for users ```MOCK_USER_DATA``` and for products ```MOCK_PRODUCT_DATA```
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Define columns ui for the information to be displayed (select only data you want displayed)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Naming convention:
+Use template-strings there can be only one master columns file
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+eg: ```COLUMNS.js``` the first letter in upper-case as it is a constructor creating an instance of the user's information 
+Assign the data to a variable ```const COLUMNS ``` 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+There are 2 key-value pairs in the array of objects you are creating - a Header & accessor key with their json-data values.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Header - the value is the string value of the title on the column header that will be displayed on the ui, Header is upper case
+accessor - the value is the json-value defined in your json data, accessor is lower case
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+There can be no duplicate values
 
-### Code Splitting
+```
+[
+    {
+      Header: 'Id',    
+      accessor: 'id',
+    },
+    {
+        Header: 'Title',    
+        accessor: 'title',
+      },
+      {
+        Header: 'Last Name',    
+        accessor: 'last-name',
+      },
+      {
+        Header: 'Mobile Phone',    
+        accessor: 'phone',
+      }
+]
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Create a table object with a functional component - import the ```useTable``` & ```useMemo``` hooks, import the mock data and the columns you have defined to render.
 
-### Analyzing the Bundle Size
+Memoization is an optimization technique which passes a complex function to be memoized (stored in memory). In memoization, the result is “remembered” when the same parameters are passed-in subsequently. On a component re-render, the function won’t re-run but instead return the stored result. This can be optimal if the wrapped function is large and expensive. That is the primary use for useMemo.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- More about useMemo [https://www.robinwieruch.de/react-usememo-hook]
+- When not to use the useMemo hook [https://blog.logrocket.com/rethinking-hooks-memoization/]
+- A quick tutorial [https://www.digitalocean.com/community/tutorials/react-usememo]
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Define jsx elements required for a table in an enclosing section - i.e. the table jsx, the table body, the table head, the table head cells, the table rows, the table row cells that will render the table data that you want to display
 
-### Advanced Configuration
+5. Rendering the data with the ```useTable``` hook comes with the following built-in methods
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+        getTableProps() - getter func called in the table jsx get the prop of the parent table jsx tag
+       
+        headerGroups() - nested in the table head jsx tag maps through an array of header-items 
+        getHeaderGroupProps() - gets all the props of the headerGroups func - which are headers
+        headers() - maps through headers
+        columns() - chained to the headers method
+        column.render() - renders the column header cell elements in the table header jsx nested in the table row jsx
 
-### Deployment
+        getTableBodyProps() - getter func called in the  table body jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+        rows() - nested row cells with an array of elements to map into a row
+        prepareRow() - called to prepare each row and return the table row jsx
+        getRowProps() - called in the table row jsx before you map 
+        row.cells() - called after getRowProps called to map individual elements of the array to be rendered in the table row cells 
+        getCellProps() - called in the table data jsx and within the table data jsx and then
+        cell.render() - method called to render the individual row cell
 
-### `yarn build` fails to minify
+        footerGroups() -
+        getFooterGroupProps()
+        footerGroups.headers()
+        columns()
+        columns.render()
+      
+```        
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+6. Style to preference
