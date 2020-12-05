@@ -1,4 +1,4 @@
-export const COLUMNS = [
+export const USER_TABLE_INFO = [
     {
       Header: 'Id',    
       accessor: 'id',

@@ -1,18 +1,17 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 
-import MOCK_USER_DATA from '../../mock-data/MOCK_USER_DATA'
-import { COLUMNS } from '../../mock-data/COLUMNS'
-import '../table-styles/tableStyles.css'
+import MOCK_PRODUCT_ONE_DATA from '../../mock-data/products/MOCK_PRODUCT_ONE_DATA'
+import { PRODUCT_ONE_TABLE_INFO } from '../../mock-data/products/PRODUCT_ONE_TABLE_INFO'
+import '../../table-styles/tableStyles.css'
 
-export const UserTable = () => {
-    const columns = useMemo(() => COLUMNS, [])  
-    const data = useMemo(() => MOCK_USER_DATA, [])
+export const ProductOneTable = () => {
+    const columns = useMemo(() => PRODUCT_ONE_TABLE_INFO, [])  
+    const data = useMemo(() => MOCK_PRODUCT_ONE_DATA, [])
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        // footerGroups,
         rows,
         prepareRow
       } = useTable ({
@@ -47,12 +46,7 @@ export const UserTable = () => {
                         })}
         </tbody>
     </table>
-    <div>
- <p>Use Tables Hook</p>               
-<p>/getTableProps()/</p>
-<p>/table header/headerGroups[]/getheaderGroupProps()/headers[]/ column[]/ column.render('Header')</p>
-<p>/tbody/getTableBodyProps()/prepareRow()/getRowProps()/ cells[]/getCellProps()/cell.render("Cell")</p>  
-   </div>
+  
 </div>
     )
 }
