@@ -1,31 +1,55 @@
 import React, { useMemo } from 'react'
-// use the sorter hook
-import { useTable, useSortBy } from 'react-table'
+// hooks for tables
+import { useTable, useSortBy, useGlobalFilter, useFilters, } from 'react-table'
 
 import MOCK_PRODUCT_ONE_DATA from '../../mock-data/products/MOCK_PRODUCT_ONE_DATA'
 import { PRODUCT_ONE_TABLE_INFO } from '../../mock-data/products/PRODUCT_ONE_TABLE_INFO'
 import '../../table-styles/tableStyles.css'
+import { GlobalSearchFilter } from '../../filters/GlobalSearchFilter'
+import { ColumnSearchFilter } from '../../filters/ColumnSearchFilter'
 
 export const ProductOneTable = () => {
+    
     const columns = useMemo(() => PRODUCT_ONE_TABLE_INFO, [])  
     const data = useMemo(() => MOCK_PRODUCT_ONE_DATA, [])
+
+    // column filtering memoization
+    const defaultColumn = React.useMemo(
+      () => ({
+        Filter: ColumnSearchFilter
+      }),
+      []
+    )
+
+
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
         footerGroups,
         rows,
-        prepareRow
+        prepareRow,
+        state,
+        // function to set the global filter text value
+      setGlobalFilter
       } = useTable ({
        columns,
        data,
+      //  add default column for search filter after data is passed this param is used as an arg
+       defaultColumn,
       },
-      // add hook to sort
+      // add hooks global filter before useSortBy
+      useFilters,
+      useGlobalFilter,
       useSortBy
     )
-    
+  //  Table state deconstructed to extract only the global filter
+    const { globalFilter } = state
     return (
 <div>
+  <div><h3>Product Table with JSON-data/ Hooks & sort, search, filter functionality</h3></div>
+  {/* set props for the imported child component */}
+  <div><GlobalSearchFilter filter={globalFilter} setFilter={setGlobalFilter} /></div>
     <table{...getTableProps()}>
         <thead>
                 {
@@ -42,6 +66,8 @@ export const ProductOneTable = () => {
                         : ' 🔼'
                       : ''}
                   </span>
+                  {/* render the filter by adding the methods to the column hook */}
+                  <div>{column.canFilter && column.render('Filter') }</div>
                           </th>
                         ))}
                       </tr>)))

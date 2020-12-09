@@ -18,7 +18,6 @@ It is useful to work on on the stateful rendering with factory function to rende
 
 Documentation in the readme file in the music-tables folder.
 
-
 __Note naming conventions are important to ensure the right data is called matching the right table column and row__
 
 1. Data set-up client-side 
@@ -133,8 +132,15 @@ Header groups - Group information under a common heading. In the ```_INFO``` fil
 
 4. Columns - Sorting, Filtering, Ordering, Hiding, Make-sticky, Select Rows (Checkbox)
 
+- ```useFilters``` searches the columns - data needs to be added to the JSON data file
+- ```useGlobalFilter``` searches the whole component page - works with the local search of each column
+- ```useSortBy ```  sorts in ascending and descending order
+
+Disable column filtering is done in the data-file
 
 **Async-Debounce**
+
+Debouncing the filter functionality is important as re-renders occur on every search letter typed in the global and column filters. It improves performance. We can use the ```asyncDebounce
 
 
 6. Paging options 
