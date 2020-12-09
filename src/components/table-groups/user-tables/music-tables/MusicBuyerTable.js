@@ -23,16 +23,7 @@ export class MusicBuyerTable extends Component {
           }
         }
 
-
-// factory function declaration to render table headers
         renderTableHeader = () => {
-          // we require the first object in the array returned
-          // use the Object.keys() method to map through the object keys
-          // the key of this object is in the array returned and assigned to state as a users array
-          // we want the first key of this array and the first object inside it - at element 0 position
-          // map through this single object to get the headers of the table
-          // render them to the table header jsx tag
-          // they key here is the attribute of the element
           return Object.keys(this.state.users[0]).map(attr => <th key={attr}>{attr.toUpperCase()}</th>) 
         }
 
@@ -54,8 +45,8 @@ export class MusicBuyerTable extends Component {
         }
     
         render() {
-            const {  hasErrors, loadingUserData, users } = this.state
-
+            const {  hasErrors, loadingUserData, users } = this.state     
+            
             if (hasErrors) {
               return <div>Something went wrong, please check again</div>
             }
@@ -66,27 +57,21 @@ export class MusicBuyerTable extends Component {
 
             return users.length > 0
               ? (
-          <div>
-                <h3>Music Buyers Table with API and stateful component</h3>
-          
+                <div> 
+              <h3>Music Buyers Table with API and stateful component</h3>     
                 <table>            
                   <thead>
                     <tr>
-                      Place-holder for Table Header:
-                      {/* {this.renderTableHeader()}  factory function called/ invoked here to render data*/}
                       {this.renderTableHeader()} 
                     </tr>
                   </thead>
                   <tbody>
-                    PlaceHolder for Table Rows
                     {this.renderTableRows()}
                   </tbody>
                 </table>
-                </div> 
-             
+                </div>         
               ) : (
                 <div>
-                  No users.
               </div>
               )            
           }        
