@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 export class MusicBuyerTable extends Component {
-    constructor(props) {
+    
+  constructor(props) {
         super(props)
     
         this.state = {
@@ -11,6 +12,7 @@ export class MusicBuyerTable extends Component {
 
         }
     }
+
     async componentDidMount(){
         this.setState({ loadingUserData: true})
 
@@ -34,17 +36,22 @@ export class MusicBuyerTable extends Component {
           // render the map to the jsx th tags
           return Object.keys(this.state.users[0]).map(() => <th></th> )
         }
+
+        renderTableRows =() =>{
+          return this.state.users.map(user =>{ return (<tr key={user.id}><td>{user.username}</td></tr>)})
+        }
     
         render() {
-            const { users, loadingUserData, hasErrors } = this.state
+            const {  hasErrors, loadingUserData, users } = this.state
+
+            if (hasErrors) {
+              return <div>Something went wrong, please check again</div>
+            }
                    
             if (loadingUserData) {
               return <div>Loading...</div>
             }
-        
-            if (hasErrors) {
-              return <div>Something went wrong, please check again</div>
-            }
+                
         // if there are more users than 0 in the response
             return users.length > 0
               ? (
@@ -54,14 +61,13 @@ export class MusicBuyerTable extends Component {
                 <table>            
                   <thead>
                     <tr>
-                      Place-holder for Table Header: <p>{users.id}</p> 
-                      {/* {this.renderTableHeader()} */}
+                      Place-holder for Table Header:
+                      {/* {this.renderTableHeader()}  factory function called/ invoked here to render data*/}
                     </tr>
                   </thead>
                   <tbody>
                     PlaceHolder for Table Rows
-                 {users.username}
-                    {/* {this.renderTableRows()} */}
+                    {this.renderTableRows()}
                   </tbody>
                 </table>
                 </div> 
@@ -70,10 +76,8 @@ export class MusicBuyerTable extends Component {
                 <div>
                   No users.
               </div>
-              )
-              
-          }  
-       
+              )            
+          }        
         }          
 
 export default MusicBuyerTable
