@@ -7,17 +7,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run  `yarn start`  Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Mock-data from
 
-https://www.mockaroo.com/
+## Steps to create a stateful table and tables with the useTable Hook
 
-## Steps to create a table with the useTable Hook
+Table hooks abstract the factory functions you need to write to render out a table header and rows. To see how tables are created with stateful components, go to the ```MusicByerTable``` component for examples.
+
+This component uses server-side rendering of data with the API-endpoint [https://jsonplaceholder.typicode.com/users/] and the ```fetch``` method, http runners like Axios may also be used. Axios helps cross-browser compatibility with API-endpoint requests.
 
 __Note naming conventions are important to ensure the right data is called matching the right table column and row__
 
-1. Data set-up create a mock-data folder
+1. Data set-up client-side 
 
-Mock-up some ```.json``` data from Mockaroo
+Mock-up some ```.json``` data from Mockaroo use the API-endpoint[https://www.mockaroo.com/]
 
 Naming convention:
 Use template-strings for the name of the json file ```MOCK_NAME_DATA```
@@ -119,4 +120,18 @@ Now you can avail of the ```useTable``` hook comes with the following built-in m
 
 In this repo 2 tables have been created for users and products examples of the code are in the respective folders, to follow as examples.
 
-6. Style to preference
+
+3. Add headers/ footers
+
+Adding Footers follows the same methodology setting up the data in the ```_INFO``` files and using the methods available in the ```footerGroups()`` suite from the library
+
+Header groups - Group information under a common heading. In the ```_INFO``` files you add the key groups of information you would like to view as a unit and set up the data first.
+
+4. Columns - Sorting, Filtering, Ordering, Hiding, Make-sticky, Select Rows (Checkbox)
+
+
+
+**Async-Debounce**
+
+
+6. Paging options 

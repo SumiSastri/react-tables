@@ -1,22 +1,27 @@
 export const PRODUCT_ONE_TABLE_INFO = [
     {
-      Header: 'Id',    
+      Header: 'Id',   
+      Footer: 'Id',    
       accessor: 'id',
     },
     {
-        Header: 'Item',    
+        Header: 'Item', 
+        Footer: 'Item',   
         accessor: 'item',
       },  
       {
-        Header: 'Photo',    
+        Header: 'Photo', 
+        Footer: 'Photo',   
         accessor: 'photo',
       },
       {
-        Header: 'Is available',    
+        Header: 'Is available', 
+        Footer: 'Is available', 
         accessor: 'check-yes-no',
       },
       {
-        Header: 'Date',    
+        Header: 'Date',   
+        Footer: 'Date',  
         accessor: 'date',
       },
       

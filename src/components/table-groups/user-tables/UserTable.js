@@ -2,11 +2,11 @@ import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 
 import MOCK_USER_DATA from '../../mock-data/users/MOCK_USER_DATA'
-import { USER_TABLE_INFO } from '../../mock-data/users/USER_TABLE_INFO'
+import {GROUPED_COLUMNS } from '../../mock-data/users/USER_TABLE_INFO'
 import '../../table-styles/tableStyles.css'
 
 export const UserTable = () => {
-    const columns = useMemo(() => USER_TABLE_INFO, [])  
+    const columns = useMemo(() => GROUPED_COLUMNS, [])  
     const data = useMemo(() => MOCK_USER_DATA, [])
     const {
         getTableProps,
@@ -22,6 +22,7 @@ export const UserTable = () => {
     
     return (
 <div>
+  <h3>JSON-users table with Hooks</h3>
     <table{...getTableProps()}>
         <thead>
                 {
@@ -45,7 +46,7 @@ export const UserTable = () => {
                             </tr>
                           )
                         })}
-        </tbody>
+        </tbody>   
     </table>
     <div>
  <p>Use Tables Hook</p>               

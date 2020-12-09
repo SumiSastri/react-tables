@@ -21,6 +21,42 @@ export const USER_TABLE_INFO = [
       },
       
 ]   
+
+export const GROUPED_COLUMNS = [
+  {
+    Header: 'Id',
+    accessor: 'id'
+  },
+  
+  {
+  Header: 'Users',
+  columns: [
+  {
+      Header: 'First Name',    
+      accessor: 'first-name',
+    },  
+    {
+      Header: 'Last Name',    
+      accessor: 'last-name',
+  },
+]
+  },
+
+  {
+  Header: 'Contact Details',
+    columns: [
+      {
+        Header: 'Mobile Phone',    
+        accessor: 'phone-number',
+      },
+      {
+        Header: 'Email',    
+        accessor: 'email-address',
+      },
+    ]
+  },
+    ]
+
   
 
 

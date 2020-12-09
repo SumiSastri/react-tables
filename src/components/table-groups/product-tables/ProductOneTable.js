@@ -12,6 +12,7 @@ export const ProductOneTable = () => {
         getTableProps,
         getTableBodyProps,
         headerGroups,
+        footerGroups,
         rows,
         prepareRow
       } = useTable ({
@@ -45,6 +46,15 @@ export const ProductOneTable = () => {
                           )
                         })}
         </tbody>
+         <tfoot>
+         {footerGroups.map(footerGroup => (
+           <tr {...footerGroup.getFooterGroupProps()}>
+             {footerGroup.headers.map(column => (
+               <td {...column.getFooterProps()}>{column.render('Footer')}</td>
+             ))}
+           </tr>
+         ))}
+       </tfoot>
     </table>
   
 </div>
