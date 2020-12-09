@@ -57,6 +57,20 @@ Debugging: - running logs in the code helps you check in the console whether the
 4. Write a factory function to render the rows - this is a simple map function and will help you see the API-data render
 
 5. Write the factory function to render the table header 
-  
- 
 
+- we require the first object in the array returned
+- use the Object.keys() method to map through the object keys
+- the key of this object is in the array returned and assigned to state as a users array
+- we want the first key of this array and the first object inside it - at element 0 position
+- map through this single object to get the headers of the table
+- render them to the table header jsx tag
+- they key here is the attribute of the element
+
+```
+// factory function declaration to render table headers
+        renderTableHeader = () => {
+          return Object.keys(this.state.users[0]).map(attr => <th key={attr}>{attr.toUpperCase()}</th>) 
+        } 
+
+```
+6. Now that you have successfully rendered both the header and one table row display the rest of the rows and information
