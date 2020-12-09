@@ -1,4 +1,5 @@
 import {ColumnSearchFilter} from '../../filters/ColumnSearchFilter'
+import {Checkbox} from '../../checkboxes/Checkbox'
 
 export const PRODUCT_ONE_TABLE_INFO = [
     {
@@ -26,7 +27,8 @@ export const PRODUCT_ONE_TABLE_INFO = [
         Footer: 'Is available', 
         accessor: 'check-yes-no',
         Filter: ColumnSearchFilter,
-        disableFilters: true
+        disableFilters: true,
+        Checkbox: Checkbox
       },
       {
         Header: 'Date',   

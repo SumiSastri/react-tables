@@ -1,12 +1,14 @@
 import React, { useMemo } from 'react'
 // hooks for tables
-import { useTable, useSortBy, useGlobalFilter, useFilters, } from 'react-table'
+import { useTable, useSortBy, useGlobalFilter, useFilters, useColumnOrder } from 'react-table'
 
 import MOCK_PRODUCT_ONE_DATA from '../../mock-data/products/MOCK_PRODUCT_ONE_DATA'
 import { PRODUCT_ONE_TABLE_INFO } from '../../mock-data/products/PRODUCT_ONE_TABLE_INFO'
 import '../../table-styles/tableStyles.css'
 import { GlobalSearchFilter } from '../../filters/GlobalSearchFilter'
 import { ColumnSearchFilter } from '../../filters/ColumnSearchFilter'
+// import {Checkbox} from '../../checkboxes/Checkbox'
+import {CheckboxHook} from '../../checkboxes/CheckboxHook'
 
 export const ProductOneTable = () => {
     
@@ -21,14 +23,16 @@ export const ProductOneTable = () => {
       []
     )
 
-
-    const {
+      const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
         footerGroups,
         rows,
         prepareRow,
+        allColumns,
+        getToggleHideAllColumnsProps,
+        setColumnOrder,
         state,
         // function to set the global filter text value
       setGlobalFilter
@@ -41,15 +45,39 @@ export const ProductOneTable = () => {
       // add hooks global filter before useSortBy
       useFilters,
       useGlobalFilter,
-      useSortBy
+      useSortBy, 
+      useColumnOrder
     )
+
+    // use accessor to change column order, factory function for onClick handler
+    const changeOrder = () => {
+      setColumnOrder(['id', 'item',  'date', 'check-yes-no', ])
+  }
+
   //  Table state deconstructed to extract only the global filter
     const { globalFilter } = state
     return (
 <div>
   <div><h3>Product Table with JSON-data/ Hooks & sort, search, filter functionality</h3></div>
+  <div><button onClick={changeOrder}>Change column order</button></div>
   {/* set props for the imported child component */}
   <div><GlobalSearchFilter filter={globalFilter} setFilter={setGlobalFilter} /></div>
+  
+  <div>
+    {/* the behaviour of the 2 check boxes is slightly different uncomment import and change to see the difference */}
+          <CheckboxHook {...getToggleHideAllColumnsProps()} /> Check to show all
+        </div>
+        <p>Check to hide column</p>
+        {allColumns.map(column => (
+          <div key={column.id}>
+            <label>
+              <input type='checkbox' {...column.getToggleHiddenProps()} />{' '}
+              {column.Header}
+            </label>
+          </div>
+        ))}
+        <br />
+
     <table{...getTableProps()}>
         <thead>
                 {

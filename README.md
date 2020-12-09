@@ -130,7 +130,7 @@ Adding Footers follows the same methodology setting up the data in the ```_INFO`
 
 Header groups - Group information under a common heading. In the ```_INFO``` files you add the key groups of information you would like to view as a unit and set up the data first.
 
-4. Columns - Sorting, Filtering, Ordering, Hiding, Make-sticky, Select Rows (Checkbox)
+4. Columns - Sorting, Searching, Select Rows (Checkboxs),
 
 - ```useFilters``` searches the columns - data needs to be added to the JSON data file
 - ```useGlobalFilter``` searches the whole component page - works with the local search of each column
