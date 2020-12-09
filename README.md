@@ -10,9 +10,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Steps to create a stateful table and tables with the useTable Hook
 
-Table hooks abstract the factory functions you need to write to render out a table header and rows. To see how tables are created with stateful components, go to the ```MusicByerTable``` component for examples.
+Table hooks abstract the factory functions you need to write to render out a table header and rows. To see how tables are created with stateful components, go to the ```MusicBuyerTable``` component for examples.
 
 This component uses server-side rendering of data with the API-endpoint [https://jsonplaceholder.typicode.com/users/] and the ```fetch``` method, http runners like Axios may also be used. Axios helps cross-browser compatibility with API-endpoint requests.
+
+It is useful to work on on the stateful rendering with factory function to render the table data first as it will be clear which functions the React Hooks are memoising and abstracting.
+
+Documentation in the readme file in the music-tables folder.
+
 
 __Note naming conventions are important to ensure the right data is called matching the right table column and row__
 
