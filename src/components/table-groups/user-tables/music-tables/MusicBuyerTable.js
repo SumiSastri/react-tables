@@ -3,20 +3,16 @@ import React, { Component } from 'react'
 export class MusicBuyerTable extends Component {
     
   constructor(props) {
-        super(props)
-    
+        super(props)  
         this.state = {
              users:[],
              loadingUserData: false,
              hasErrors: false,
-
         }
     }
 
     async componentDidMount(){
-        
       this.setState({ loadingUserData: true})
-
         const usersApiResponse = await fetch('https://jsonplaceholder.typicode.com/users/') 
 
         if (usersApiResponse.ok) {
@@ -30,10 +26,14 @@ export class MusicBuyerTable extends Component {
 
 // factory function declaration to render table headers
         renderTableHeader = () => {
-          // use the Object.keys method to locate key-value pairs of the users: users object that has been assigned to state
-          // map through the array of the usersApiResonse array 
-          // render the map to the jsx th tags
-          return Object.keys(this.state.users[0]).map(() => <th></th> )
+          // we require the first object in the array returned
+          // use the Object.keys() method to map through the object keys
+          // the key of this object is in the array returned and assigned to state as a users array
+          // we want the first key of this array and the first object inside it - at element 0 position
+          // map through this single object to get the headers of the table
+          // render them to the table header jsx tag
+          // they key here is the attribute of the element
+          return Object.keys(this.state.users[0]).map(attr => <th key={attr}>{attr.toUpperCase()}</th>) 
         }
 
         renderTableRows =() =>{
@@ -61,6 +61,7 @@ export class MusicBuyerTable extends Component {
                     <tr>
                       Place-holder for Table Header:
                       {/* {this.renderTableHeader()}  factory function called/ invoked here to render data*/}
+                      {this.renderTableHeader()} 
                     </tr>
                   </thead>
                   <tbody>

@@ -125,7 +125,6 @@ Now you can avail of the ```useTable``` hook comes with the following built-in m
 
 In this repo 2 tables have been created for users and products examples of the code are in the respective folders, to follow as examples.
 
-
 3. Add headers/ footers
 
 Adding Footers follows the same methodology setting up the data in the ```_INFO``` files and using the methods available in the ```footerGroups()`` suite from the library
@@ -133,7 +132,6 @@ Adding Footers follows the same methodology setting up the data in the ```_INFO`
 Header groups - Group information under a common heading. In the ```_INFO``` files you add the key groups of information you would like to view as a unit and set up the data first.
 
 4. Columns - Sorting, Filtering, Ordering, Hiding, Make-sticky, Select Rows (Checkbox)
-
 
 
 **Async-Debounce**
