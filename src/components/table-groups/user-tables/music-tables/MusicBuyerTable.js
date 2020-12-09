@@ -14,23 +14,20 @@ export class MusicBuyerTable extends Component {
     }
 
     async componentDidMount(){
-
-        this.setState({ loadingUserData: true})
-
-        const usersApiResponse = await fetch('https://jsonplaceholder.typicode.com/users/')
         
+      this.setState({ loadingUserData: true})
+
+        const usersApiResponse = await fetch('https://jsonplaceholder.typicode.com/users/') 
+
         if (usersApiResponse.ok) {
-          // console.log(usersApiResponse) 
-          //  check data has been fetched
             const users = await usersApiResponse.json()
-            // console.log(users)
-            // check response returned 
             this.setState({ users, loadingUserData: false })
-            // assign the user response to the state data
           } else {
             this.setState({ hasErrors: true, loadingUserData: false })
           }
         }
+
+
 // factory function declaration to render table headers
         renderTableHeader = () => {
           // use the Object.keys method to locate key-value pairs of the users: users object that has been assigned to state
@@ -53,8 +50,7 @@ export class MusicBuyerTable extends Component {
             if (loadingUserData) {
               return <div>Loading...</div>
             }
-                
-        // if there are more users than 0 in the response
+
             return users.length > 0
               ? (
           <div>
