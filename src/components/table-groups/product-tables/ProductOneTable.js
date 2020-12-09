@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
-import { useTable } from 'react-table'
+// use the sorter hook
+import { useTable, useSortBy } from 'react-table'
 
 import MOCK_PRODUCT_ONE_DATA from '../../mock-data/products/MOCK_PRODUCT_ONE_DATA'
 import { PRODUCT_ONE_TABLE_INFO } from '../../mock-data/products/PRODUCT_ONE_TABLE_INFO'
@@ -18,7 +19,10 @@ export const ProductOneTable = () => {
       } = useTable ({
        columns,
        data,
-      })
+      },
+      // add hook to sort
+      useSortBy
+    )
     
     return (
 <div>
@@ -28,7 +32,17 @@ export const ProductOneTable = () => {
                     headerGroups.map((headerGroup => 
                         (<tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map( column => (
-                          <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                          // pass hook as a prop
+                          <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                            {column.render('Header')}
+                        <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
+                          </th>
                         ))}
                       </tr>)))
                 }

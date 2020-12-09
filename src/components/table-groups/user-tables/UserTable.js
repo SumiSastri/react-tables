@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 
 import MOCK_USER_DATA from '../../mock-data/users/MOCK_USER_DATA'
 import {GROUPED_COLUMNS } from '../../mock-data/users/USER_TABLE_INFO'
@@ -18,7 +18,9 @@ export const UserTable = () => {
       } = useTable ({
        columns,
        data,
-      })
+    },
+    useSortBy
+  )
     
     return (
 <div>
@@ -29,7 +31,17 @@ export const UserTable = () => {
                     headerGroups.map((headerGroup => 
                         (<tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map( column => (
-                          <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                          <th {...column.getHeaderProps()}>{column.render('Header')}
+                          <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
+                          
+                          
+                          </th>
                         ))}
                       </tr>)))
                 }
@@ -48,12 +60,6 @@ export const UserTable = () => {
                         })}
         </tbody>   
     </table>
-    <div>
- <p>Use Tables Hook</p>               
-<p>/getTableProps()/</p>
-<p>/table header/headerGroups[]/getheaderGroupProps()/headers[]/ column[]/ column.render('Header')</p>
-<p>/tbody/getTableBodyProps()/prepareRow()/getRowProps()/ cells[]/getCellProps()/cell.render("Cell")</p>  
-   </div>
 </div>
     )
 }

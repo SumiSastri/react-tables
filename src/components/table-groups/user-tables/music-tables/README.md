@@ -74,3 +74,5 @@ Debugging: - running logs in the code helps you check in the console whether the
 
 ```
 6. Now that you have successfully rendered both the header and one table row display the rest of the rows and information
+
+Follows tutorial Coding Shiksha[https://codingshiksha.com/react/react-js-jsonplaceholder-api-example-to-render-data-inside-table-full-example-tutorial/]
