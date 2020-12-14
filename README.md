@@ -130,17 +130,25 @@ Adding Footers follows the same methodology setting up the data in the ```_INFO`
 
 Header groups - Group information under a common heading. In the ```_INFO``` files you add the key groups of information you would like to view as a unit and set up the data first.
 
-4. Columns - Sorting, Searching, Select Rows (Checkboxs),
+4. Columns - Sorting, Searching, Select Rows (Checkboxes),
 
 - ```useFilters``` searches the columns - data needs to be added to the JSON data file
+Note: Disabling column filtering is done in the data-file
 - ```useGlobalFilter``` searches the whole component page - works with the local search of each column
-- ```useSortBy ```  sorts in ascending and descending order
+- ```useSortBy```  sorts in ascending and descending order
+- ```useColumnOrder``` orders the columns - allows you change the order of display
 
-Disable column filtering is done in the data-file
+       - props for columns  
+       ```
+        allColumns,
+        getToggleHideAllColumnsProps,
+        setColumnOrder,
+        ```
 
 **Async-Debounce**
 
 Debouncing the filter functionality is important as re-renders occur on every search letter typed in the global and column filters. It improves performance. We can use the ```asyncDebounce
 
-
 6. Paging options 
+
+7. Make sticky

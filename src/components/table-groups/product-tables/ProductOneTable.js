@@ -30,8 +30,10 @@ export const ProductOneTable = () => {
         footerGroups,
         rows,
         prepareRow,
+        // for checkboxes to show and hide columns
         allColumns,
         getToggleHideAllColumnsProps,
+        // for reordering the columns
         setColumnOrder,
         state,
         // function to set the global filter text value
@@ -65,9 +67,8 @@ export const ProductOneTable = () => {
   
   <div>
     {/* the behaviour of the 2 check boxes is slightly different uncomment import and change to see the difference */}
-          <CheckboxHook {...getToggleHideAllColumnsProps()} /> Check to show all
+          <CheckboxHook {...getToggleHideAllColumnsProps()} /> Check columns to hide, or check top box to show all columns
         </div>
-        <p>Check to hide column</p>
         {allColumns.map(column => (
           <div key={column.id}>
             <label>
